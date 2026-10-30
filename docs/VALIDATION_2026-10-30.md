@@ -71,3 +71,48 @@ live capture should use its own receipt. GitHub Actions exercises the offline
 suite on Windows and Linux with Python 3.11 and 3.13; actual run status is
 available in the repository's Actions checks and remains distinct from these
 local results.
+
+## Follow-up: coherent current view and public E729
+
+The earlier sections record the initial E726 inspection and 39-test source.
+The corrected reader now passes **48 local offline tests**, including current
+state/time/next-relation agreement, open object relations, continuity flags,
+private-marker object keys and preservation of declared public-view metadata.
+
+The owner projector passed 13 focused local tests. A provider-free,
+network-isolated reconstruction on the VPS ran as an unprivileged account
+against copies of all 729 deposits. All recorded deposit digests matched.
+The public export preserves 728 original resultant values exactly. In E727
+only a private filesystem source reference is replaced by an explicit
+placeholder, with its JSON pointer and transformation declared in the carrier.
+The private deposit and its original digest are unchanged.
+
+The 726 earlier event contents agree with the prior public file. E726's
+provenance filename is corrected to the ledger's zero-padded basename; its
+deposit digest and source identity agree. Consequently `compare` reports E726
+as changed, three new event IDs, no removed IDs and a non-identical prefix.
+This is an attributed projection difference, not a rewritten occurrence.
+
+```text
+source: https://d-nd.com/data/lab/regenerative/latest.json
+retrieved_at: 2026-10-30T21:22:15.357190+00:00
+schema: mm_dnd.regenerative_lab_public_projection.v0.2
+bytes: 4912886
+sha256: 5fb25a9f37a47233f0f4422ed21180fe9e1913d6a0dafd7ea8d39591f817d011
+occurrences: 729
+latest recorded observed_at: 2026-09-25T20:39:47+00:00
+```
+
+The corrected toolkit fetched and verified these served HTTPS bytes against
+the candidate artifact. Browser inspection of the live Lab showed 729 events,
+opened E727 and displayed its public source placeholder; no configured private
+filesystem marker appeared in the inspected text and no console error was
+recorded. No THIA/provider request was sent.
+
+Private owner checks confirmed all 729 deposit digests, ledger, current state,
+memory/control state and saved model plan preserved across activation. No new
+Lab occurrence, provider call, scheduler change or service restart accompanied
+the repair. The previous public file remains recoverable in the owner's
+maintenance backup. The public corpus and private administrative receipts are
+not committed in this repository. Scientific statements retain their original
+research status; these checks concern projection and consumer behavior.

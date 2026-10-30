@@ -63,11 +63,15 @@ def _integer(value: Any) -> bool:
 
 def _public_values(value: Any) -> bool:
     if isinstance(value, dict):
-        return all(_public_values(v) for v in value.values())
+        return all(_public_values(k) and _public_values(v) for k, v in value.items())
     if isinstance(value, list):
         return all(_public_values(v) for v in value)
     return not isinstance(value, str) or not any(
         marker in value.casefold() for marker in PRIVATE_MARKERS)
+
+
+def _next_relation(value: Any) -> bool:
+    return value is None or isinstance(value, str) or (isinstance(value, dict) and bool(value))
 
 
 def _shape(value: Any) -> str:
@@ -187,6 +191,10 @@ def read_bytes(raw: bytes, expected_sha256: str | None = None) -> Corpus:
             raise CorpusError("recorded memory decision must be a string")
         if event.get("state") not in {"OCCURRENCE", "REGENERATIVE_EVENT", "NO_EVENT"}:
             raise CorpusError("unsupported occurrence state; no classification inferred")
+        if "next_relation" not in event or not _next_relation(event["next_relation"]):
+            raise CorpusError("next relation must be null, text or a non-empty source record")
+        if any(not isinstance(event.get(key), str) for key in ("finite_state", "observed_at")):
+            raise CorpusError("occurrence state and observation time must be strings")
         provenance = event.get("provenance", {})
         if not isinstance(provenance, dict) or not re.fullmatch(r"[0-9a-f]{64}", str(provenance.get("deposit_sha256", ""))):
             raise CorpusError("each occurrence needs its recorded deposit SHA-256")
@@ -212,6 +220,13 @@ def read_bytes(raw: bytes, expected_sha256: str | None = None) -> Corpus:
         or current.get("latest_event_id") != latest["event_id"]
         or current.get("latest_event_state") != latest["state"]):
         raise CorpusError("current occurrence does not match the complete projection")
+    for key in ("finite_state", "observed_at", "next_relation"):
+        if key not in current or canonical(current[key]) != canonical(latest[key]):
+            raise CorpusError("current occurrence view differs from its latest public record")
+    for key in ("lab_continues", "mandatory_followup"):
+        if key in current or key in latest:
+            if type(current.get(key)) is not bool or current[key] is not latest.get(key):
+                raise CorpusError("current occurrence continuity flag differs from its record")
     if type(machine.get("processed_events")) is not int or machine["processed_events"] != len(events):
         raise CorpusError("processed event count does not match the projection")
     if any(not _integer(machine.get(k)) for k in ("provider_calls", "retries")):

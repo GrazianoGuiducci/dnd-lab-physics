@@ -88,6 +88,19 @@ genealogia e corregge il precedente percorso d’installazione. Le cartelle
 `domain/` e `tools/exp_*.py` mantengono il pacchetto di maggio; non sono il
 prompt corrente o una nuova convalida scientifica delle sue affermazioni.
 
+Il sistema comprende anche l'operatore umano, Codex come assistente situato,
+le scelte sui modelli e sui controlli, e il ritorno osservabile degli interventi.
+Rigenerazione scientifica, manutenzione e relazione umana sono circuiti connessi,
+descritti nell'[architettura](docs/ARCHITECTURE.md#operator-situated-assistant-and-operational-controls).
+Il corpus pubblico rende leggibile una parte di questa relazione complessiva.
+
+Nel seguito del 30 ottobre, la correzione del confine di esportazione ha reso
+pubbliche tutte le 729 occorrenze già depositate, con ultima occorrenza del
+25 settembre. Un riferimento sorgente riservato in E727 è sostituito nella
+vista pubblica con una dichiarazione esplicita; il deposito originale rimane
+intatto. La pubblicazione non ha avviato un nuovo ciclo. Identità e confronto
+sono nella [ricevuta di verifica](docs/VALIDATION_2026-10-30.md).
+
 La documentazione tecnica collegata è in inglese:
 [architettura](docs/ARCHITECTURE.md), [comandi](docs/CORPUS.md),
 [ricerca e prove](docs/RESEARCH.md), [fonti](docs/SOURCES.md),

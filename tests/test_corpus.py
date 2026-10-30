@@ -227,5 +227,52 @@ class CorpusTests(unittest.TestCase):
             self.assertEqual(json.loads(buffer.getvalue().decode("utf-8"))["resultant_carrier"]["value"], {"math": "φ − ∞"})
 
 
+    def test_object_next_relation_preserved_structurally(self):
+        self.data["current"]["next_relation"] = {"b": [1, 2], "a": "probe"}
+        self.data["events"][-1]["next_relation"] = {"a": "probe", "b": [1, 2]}
+        self.assertEqual(read_bytes(canonical(self.data)).data["current"]["next_relation"], {"a": "probe", "b": [1, 2]})
+
+    def test_current_next_relation_mismatch_rejected(self):
+        self.data["current"]["next_relation"] = {"probe": "not recorded by latest event"}
+        self.rejected()
+
+    def test_empty_next_relation_record_rejected(self):
+        self.data["current"]["next_relation"] = {}
+        self.data["events"][-1]["next_relation"] = {}
+        self.rejected()
+
+    def test_current_finite_state_mismatch_rejected(self):
+        self.data["current"]["finite_state"] = "different"
+        self.rejected()
+
+    def test_current_observed_at_mismatch_rejected(self):
+        self.data["current"]["observed_at"] = "different"
+        self.rejected()
+
+    def test_current_lab_continues_mismatch_rejected(self):
+        self.data["events"][-1]["lab_continues"] = False
+        self.rejected()
+
+    def test_missing_next_relation_rejected(self):
+        del self.data["current"]["next_relation"]
+        self.rejected()
+
+    def test_private_marker_in_object_key_rejected(self):
+        for key in ("/root/private/key", "api_key"):
+            with self.subTest(key=key):
+                self.data["events"][-1]["extra"] = {key: "otherwise safe"}
+                self.rejected()
+
+    def test_declared_public_resultant_view_is_preserved(self):
+        carrier = self.data["events"][-1]["resultant_carrier"]
+        carrier["public_projection"] = {
+            "schema": "mm_dnd.lab_public_resultant_projection.v0.1",
+            "value_relation": "public_view_with_declared_redactions",
+            "redactions": [{"pointer": "/relations/0/source", "operation": "replace_private_filesystem_reference"}],
+        }
+        data = read_bytes(canonical(self.data)).data
+        self.assertEqual(data["events"][-1]["resultant_carrier"], carrier)
+
+
 if __name__ == "__main__":
     unittest.main()

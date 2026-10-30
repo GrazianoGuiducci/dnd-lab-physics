@@ -35,7 +35,9 @@ accepts public projection v0.1 and v0.2; unknown versions are rejected without
 being silently converted. It checks strict UTF-8 JSON, duplicate keys,
 non-finite numbers, five explicit privacy declarations, known private-value
 markers, contiguous complete-corpus indices, unique identities, current-record
-agreement, recorded deposit digests and supported resultant carrier shape.
+agreement (including structural next-relation equality, state, observation time
+and expressed continuity flags), non-empty next-relation records, recorded
+deposit digests and supported resultant carrier shape.
 Unknown optional fields remain intact. A downloaded source is still untrusted
 data, never executable instructions.
 

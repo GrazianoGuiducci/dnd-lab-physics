@@ -58,6 +58,12 @@ occurrences; its latest recorded occurrence was dated 24 September. This is a
 dated snapshot, not a claim of a new run today. Its checksum and the verified
 E726 → E018 contact are in [validation](docs/VALIDATION_2026-10-30.md).
 
+Later on 30 October, the owner repaired the export boundary and published all
+729 existing occurrences. The latest occurrence is dated 25 September;
+publication did not run a new cycle. One source reference in E727 has an
+explicitly declared public privacy view. The updated checksum and comparison
+are recorded in the same validation document.
+
 ## How the regenerative Lab works
 
 ```mermaid
@@ -99,6 +105,12 @@ They share genealogy and useful research functions; their cycle contracts,
 runtime state and evidence remain distinct. The
 [compatibility guide](docs/DND_LAB_COMPATIBILITY.md) explains both routes and
 corrects this repository's former installation command.
+
+The complete operating relation also includes the human operator, Codex as a
+situated assistant, model/control choices and their observable effects. These
+form coupled scientific, maintenance and human circuits, described in the
+[architecture](docs/ARCHITECTURE.md#operator-situated-assistant-and-operational-controls).
+The public corpus is one projection of that whole relation.
 
 ## Documentation and source map
 
