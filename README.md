@@ -1,71 +1,129 @@
-# dnd-lab-physics
+# D-ND Physics Lab
 
-The physics research domain for [D-ND_LAB](https://github.com/GrazianoGuiducci/D-ND_LAB) — first applied lab built with the D-ND modus.
+**Explore how a research occurrence changes a field of questions, relations and
+competences.** The public companion to the regenerative Physics Lab developed
+in MM-DND by Graziano Guiducci.
 
-> The engine is generic. The content is here.
+[Open the current Lab](https://d-nd.com/ai-lab) · [Italiano](README.it.md) ·
+[Corpus guide](docs/CORPUS.md) · [Architecture](docs/ARCHITECTURE.md)
 
-## What it is
+The Lab receives a present field, forms temporary attention and records a
+complete resultant. A resultant can change what the Lab recognizes in a later
+occurrence. Exact history remains reachable while selective memory carries
+transformations into the next field. The public workspace exposes these
+records, their provenance and recorded contacts.
 
-`D-ND_LAB` is the **engine**: agent loop, falsifier counter-pole, cimitero, trajectory evaluator, SSP pipeline (Scoperte → Soluzioni → Prodotti). Domain-agnostic Python.
+This checkout provides a working **provider-free public corpus toolkit**,
+documentation of the current mechanisms, a synthetic example and the original
+physics experiments. The operational researcher, private source archive and
+administrative controls stay with MM-DND. The toolkit reads their existing
+public projection; it does not start the operational Lab.
 
-`dnd-lab-physics` is the **content** for the physics applied lab:
-- `domain/` — `assertions.py` (verifiable claims), `seed_tensions.json` (research questions to explore), `context.md` (lab identity prompt), `config.json` (capabilities + verifier policy), `cimitero.md` (archived falsified claims), `tension_to_category.json` (semantic categories).
-- `tools/` — experiment scripts produced by past cycles (`exp_markov_transition.py`, `exp_dipole_classifier.py`, `exp_z12813_sequential_info.py`, ...).
+## Try an occurrence locally
 
-You install the engine once. Each domain (this one is physics) lives in its own repo.
-
-## Topics covered
-
-- Prime gap structure: residues mod 6, Markov transition matrices, structural zeros
-- Spectral signatures of dipolar order in number sequences
-- Markov memory layers (pair vs triple correlations)
-- Phase transitions in GUE-Poisson crossover
-- Detection of hidden sequential information (z=12,813 finding)
-
-The lab runs in continuous cycles, generates discoveries, falsifies them with a counter-pole, and packages what survives as installable Python kernels (see [d-nd-seed kernels](https://github.com/GrazianoGuiducci/d-nd-seed/tree/main/kernels)).
-
-## Live demo
-
-The physics lab is currently running at [lab.d-nd.com/dashboard/](https://lab.d-nd.com/dashboard/). Read-only public view of the field, knowledge graph, falsifier output, cimitero, and trajectory of all cycles.
-
-## Install
-
-Requires the engine first.
+Python 3.11 or later; no packages, account, API key or Docker required.
+From the cloned repository:
 
 ```bash
-# 1. Install the engine
-curl -fsSL https://raw.githubusercontent.com/GrazianoGuiducci/D-ND_LAB/main/install.sh | bash
-
-# 2. Add this domain
-cd ~/.d-nd-lab/domains
-git clone https://github.com/GrazianoGuiducci/dnd-lab-physics.git physics
-# physics/domain/ is what the engine reads as the domain config
-# physics/tools/ contains the experiment scripts already built
-
-# 3. Run a cycle
-cd ~/.d-nd-lab
-docker compose run --rm lab
+git clone https://github.com/GrazianoGuiducci/dnd-lab-physics.git
+cd dnd-lab-physics
+python -m physics_lab summary examples/synthetic-corpus.json
+python -m physics_lab event examples/synthetic-corpus.json --index 2
+python -m physics_lab trace examples/synthetic-corpus.json --index 2
+python -m physics_lab report examples/synthetic-corpus.json --output example-report.html
 ```
 
-See [D-ND_LAB INSTALL_PROCEDURE.md](https://github.com/GrazianoGuiducci/D-ND_LAB/blob/main/docs/INSTALL_PROCEDURE.md) for the full procedure including environment, provider chain, and dashboard setup.
+Open `example-report.html` in a browser. It works offline, with expandable
+occurrences and the complete public record beside each resultant. The example
+is synthetic: it demonstrates recorded contact between two occurrences and
+contains no Lab measurement or private source material.
 
-## Contributing
+## Explore the real public corpus
 
-This repo holds the configuration of the physics lab as it exists today. Contributions:
+```bash
+python -m physics_lab fetch --output corpus.json
+python -m physics_lab verify corpus.json
+python -m physics_lab summary corpus.json
+python -m physics_lab event corpus.json --index 1
+python -m physics_lab report corpus.json --output corpus-report.html
+```
 
-- **New experiment scripts** (`tools/exp_*.py`) — welcome via PR if reproducible and documented.
-- **Tension proposals** (`domain/seed_tensions.json`) — open an issue first; tensions feed the lab's research direction.
-- **Cimitero entries** (`domain/cimitero.md`) — only added by the lab itself when claims are falsified.
+`fetch` reads the public HTTPS projection and writes its exact bytes with a
+SHA-256 receipt. Every other command above works offline. Existing output
+files are preserved; choose a new filename for another capture. Downloads and
+generated reports are ignored by Git.
 
-Don't modify `assertions.py` or `context.md` directly — those are the lab identity, changed only by the operator.
+At the **30 October 2026 inspection**, the public projection contained 726
+occurrences; its latest recorded occurrence was dated 24 September. This is a
+dated snapshot, not a claim of a new run today. Its checksum and the verified
+E726 → E018 contact are in [validation](docs/VALIDATION_2026-10-30.md).
 
-## License
+## How the regenerative Lab works
 
-MIT. See [LICENSE](LICENSE).
+```mermaid
+flowchart LR
+    F[Present field] --> A[Temporary attention]
+    A --> O[One contained occurrence]
+    O --> R[Complete resultant]
+    R --> F
+    R --> M[Selective competence memory]
+    M --> F
+    R --> H[Recoverable cold history]
+    H -. relation calls it .-> A
+    H --> P[Public projection]
+    P --> T[This read-only toolkit]
+```
 
-## Related
+An **occurrence** is a finite event. Its **resultant** is retained in the form
+in which it occurred. The effect on the field and the effect on memory are
+distinct. Cooling releases a relation from present attention while keeping its
+history recoverable. No observed difference does not establish that no other
+difference is possible.
 
-- [D-ND_LAB](https://github.com/GrazianoGuiducci/D-ND_LAB) — the engine (domain-agnostic)
-- [d-nd-seed](https://github.com/GrazianoGuiducci/d-nd-seed) — installable kernels produced by labs (including this one)
-- [d-nd.com](https://d-nd.com) — D-ND mathematical model and research
-- [lab.d-nd.com](https://lab.d-nd.com) — Lab D-ND landing + applications + dashboard
+Recorded contact can be inspected; its presence alone does not prove a causal
+improvement or validate a physical theory. Sources, conditions, controls,
+invalidators and independent scientific tests determine what a research claim
+can support. See [research and evidence](docs/RESEARCH.md).
+
+## MM-DND, this repository and D-ND_LAB
+
+| Surface | What it provides |
+| --- | --- |
+| **MM-DND** | Current regenerative implementation, private source ownership, occurrence deposits, selective memory and operational controls. |
+| **[AI Lab](https://d-nd.com/ai-lab)** | Public workspace, occurrence history, corpus download and THIA-assisted reading. |
+| **dnd-lab-physics** | Public explanation, offline corpus tools, examples and the preserved historical physics package. |
+| **[D-ND_LAB](https://github.com/GrazianoGuiducci/D-ND_LAB)** | A separate installable domain engine, including its own physics domain and historical bootstrap. |
+
+The regenerative Lab works independently of the older D-ND_LAB orchestrator.
+They share genealogy and useful research functions; their cycle contracts,
+runtime state and evidence remain distinct. The
+[compatibility guide](docs/DND_LAB_COMPATIBILITY.md) explains both routes and
+corrects this repository's former installation command.
+
+## Documentation and source map
+
+- [Architecture](docs/ARCHITECTURE.md): field, occurrence, resultant, memory and public projection.
+- [Corpus guide](docs/CORPUS.md): all commands, checksums, tracing and comparison.
+- [D-ND_LAB compatibility](docs/DND_LAB_COMPATIBILITY.md): domain layout and historical tools.
+- [Research and evidence](docs/RESEARCH.md): authorial model, mathematics and exploratory claims.
+- [Sources](docs/SOURCES.md): attribution, public contracts and lineage.
+- [Privacy and licensing](docs/PRIVACY_AND_LICENSE.md): public input boundary and data rights.
+- [Validation](docs/VALIDATION_2026-10-30.md): exercised scope and receipts.
+- [Contributing](CONTRIBUTING.md): local checks and useful contribution paths.
+
+`physics_lab/` contains the new public tools. `examples/` and `tests/` are
+synthetic. `domain/` and `tools/exp_*.py` preserve the May 2026 package. Their
+original claims and agent context are historical artifacts, not the current
+Lab's prompt or newly endorsed findings.
+
+## License and citation
+
+Code and documentation retain the existing [MIT license](LICENSE). Downloaded
+corpus records keep their source rights; MIT does not relicense them or their
+referenced materials. [Details](docs/PRIVACY_AND_LICENSE.md).
+
+Use [CITATION.cff](CITATION.cff) for this toolkit. For the mathematical preprint,
+cite **Paper Zero**, revised 28 October 2026:
+[10.5281/zenodo.23735742](https://doi.org/10.5281/zenodo.23735742).
+Its manuscript-specific CC BY 4.0 license and scientific scope remain separate
+from this software and from historical deposits.

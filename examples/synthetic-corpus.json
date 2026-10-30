@@ -1,0 +1,81 @@
+{
+  "schema": "mm_dnd.regenerative_lab_public_projection.v0.2",
+  "projection_state": "PRESENT_FIELD_PROJECTION",
+  "lab": {
+    "identity": "perpetual_regenerative_physics_lab",
+    "movement": "synthetic example of a recorded contact",
+    "terminal_goal": false
+  },
+  "current": {
+    "finite_state": "OCCURRENCE_COMPLETE",
+    "latest_event_index": 2,
+    "latest_event_id": "synthetic-second-observation",
+    "latest_event_state": "OCCURRENCE",
+    "observed_at": "2026-10-30T00:00:00Z",
+    "next_relation": null,
+    "lab_continues": true
+  },
+  "events": [
+    {
+      "event_index": 1,
+      "event_id": "synthetic-first-observation",
+      "state": "OCCURRENCE",
+      "finite_state": "OCCURRENCE_COMPLETE",
+      "observed_at": "2026-10-30T00:00:00Z",
+      "statement": "",
+      "resultant_carrier": {
+        "schema": "mm_dnd.lab_regenerative_resultant_carrier.v0.1",
+        "shape": "object",
+        "value": {
+          "example_only": true,
+          "observation": "The same measured value can occur under two different measurement conditions.",
+          "open_question": "Which additional probe would distinguish the conditions?"
+        },
+        "legacy_fields": {"statement": "not_expressed", "relation_graph": "not_expressed", "difference_from_inputs": "not_expressed"}
+      },
+      "source_relations": [],
+      "changed_field": {"opened": ["distinguishing probe"], "preserved": [], "cooled": []},
+      "invalidators": ["This fixture contains no actual measurement."],
+      "blocked_inferences": ["A fixture is not scientific evidence."],
+      "memory_decision": "RETAIN",
+      "next_relation": null,
+      "field_transition": {"selected_seed_id": "synthetic-input", "active_object_ids": ["synthetic-input"], "source_events": [], "activated_competence_ids": []},
+      "effects": {"provider_calls": 0, "retries": 0},
+      "provenance": {"deposit": "synthetic-not-a-real-deposit", "deposit_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "source_commit": null}
+    },
+    {
+      "event_index": 2,
+      "event_id": "synthetic-second-observation",
+      "state": "OCCURRENCE",
+      "finite_state": "OCCURRENCE_COMPLETE",
+      "observed_at": "2026-10-30T00:00:00Z",
+      "statement": "",
+      "resultant_carrier": {
+        "schema": "mm_dnd.lab_regenerative_resultant_carrier.v0.1",
+        "shape": "object",
+        "value": {
+          "example_only": true,
+          "observation": "The recorded distinction remains useful; no new physical relation was measured."
+        },
+        "legacy_fields": {"statement": "not_expressed", "relation_graph": "not_expressed", "difference_from_inputs": "not_expressed"}
+      },
+      "source_relations": [],
+      "changed_field": {"opened": [], "preserved": ["distinguish value from measurement conditions"], "cooled": []},
+      "invalidators": [],
+      "blocked_inferences": ["Recorded contact does not establish a causal benefit."],
+      "memory_decision": "NO_RESIDUE",
+      "next_relation": null,
+      "field_transition": {
+        "selected_seed_id": "synthetic-retained-distinction",
+        "active_object_ids": ["synthetic-retained-distinction"],
+        "source_events": [{"event_index": 1, "event_id": "synthetic-first-observation", "object_ids": ["synthetic-retained-distinction"]}],
+        "activated_competence_ids": ["synthetic-distinction"]
+      },
+      "effects": {"provider_calls": 0, "retries": 0},
+      "provenance": {"deposit": "synthetic-not-a-real-deposit", "deposit_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "source_commit": null}
+    }
+  ],
+  "machine": {"processed_events": 2, "occurrences": 2, "provider_calls": 0, "retries": 0},
+  "privacy": {"contains_private_paths": false, "contains_prompts": false, "contains_provider_logs": false, "contains_raw_provider_output": false, "contains_secrets": false},
+  "provenance": {"deterministic": true, "projection_basis": "synthetic_fixture_not_lab_evidence"}
+}
